@@ -1,0 +1,268 @@
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Root / Page ─────────────────────────────────── */
+:root {
+  --ig:  #E1306C;
+  --tt:  #69C9D0;
+  --x:   #888787;
+  --yt:  #FF0000;
+
+  --bg:        #f9f9f7;
+  --surface:   #ffffff;
+  --border:    #e4e2da;
+  --text:      #1a1a18;
+  --muted:     #6b6b67;
+  --secondary: #f1f0ec;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+}
+
+/* ── App wrapper ────────────────────────────────── */
+.app {
+  width: 100%;
+  max-width: 680px;
+}
+
+/* ── Header ─────────────────────────────────────── */
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.header p {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ── Vote grid ───────────────────────────────────── */
+.vote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.vote-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Platform icon badges ─────────────────────────── */
+.platform-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.icon-ig { background: var(--ig); }
+.icon-tt { background: #010101; }
+.icon-x  { background: #14171A; }
+.icon-yt { background: var(--yt); }
+
+.platform-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.vote-count {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+/* ── Vote button ────────────────────────────────── */
+.vote-btn {
+  width: 100%;
+  padding: 7px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.vote-btn:hover {
+  background: var(--secondary);
+  border-color: #ccc;
+}
+
+.vote-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Statistics section ─────────────────────────── */
+.stats-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.stats-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+/* ── No data message (conditional rendering) ──────── */
+.no-data {
+  text-align: center;
+  padding: 1.5rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ── Stat rows ───────────────────────────────────── */
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.stat-row:last-of-type {
+  border-bottom: none;
+}
+
+.stat-label {
+  width: 110px;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.stat-value {
+  width: 72px;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Progress bars ───────────────────────────────── */
+.bar-track {
+  flex: 1;
+  height: 7px;
+  background: var(--secondary);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.bar-ig { background: var(--ig); }
+.bar-tt { background: var(--tt); }
+.bar-x  { background: var(--x);  }
+.bar-yt { background: var(--yt); }
+
+/* ── Summary cards ───────────────────────────────── */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.summary-card {
+  background: var(--secondary);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.summary-val {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── Reset button ────────────────────────────────── */
+.reset-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: background 0.12s, color 0.12s;
+}
+
+.reset-btn:hover {
+  background: var(--secondary);
+  color: var(--text);
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 480px) {
+  .vote-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summary-grid .summary-card:last-child {
+    grid-column: span 2;
+  }
+}
